@@ -1,0 +1,3 @@
+"D:\CLion 2019.3.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\GREMIN.dir/objects.a
+C:\PROGRA~2\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\GREMIN.dir/objects.a @CMakeFiles\GREMIN.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE -g   -static -Wl,--whole-archive CMakeFiles\GREMIN.dir/objects.a -Wl,--no-whole-archive  -o GREMIN.exe -Wl,--out-implib,libGREMIN.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\GREMIN.dir\linklibs.rsp
