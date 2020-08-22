@@ -87,7 +87,9 @@ public:
     //DEATH / DAMAGE METHODS
     bool check_if_dead();
 
-    void damage(int val) { add_health(-val); }
+    void damage(int val) { add_health(-val); std::cout << get_health() << std::endl; }
+
+    virtual void draw(sf::RenderWindow& display, float camera_pos[2]) = 0;
 
     virtual void update() { if (!check_if_dead()){ move(); } } //TODO: OVERRIDE IN OTHER CLASSES
 
@@ -120,11 +122,11 @@ public:
     void set_is_attacking(bool val) { is_attacking_ = val; }
 
     //TODO: draw function. tutaj albo osobny plik do obslugi tego gowna
-    void draw(sf::RenderWindow& display, float camera_pos[2]);
+    void draw(sf::RenderWindow& display, float camera_pos[2]) override;
 
     std::vector<Character*> attack_collision_test();
 
-    void attack();
+    void attack(); //TODO: ZLE ZROBIONY HITBOX, W OGOLE NIE ZADAJE TEZ OBRAZEN :(
 
     void respawn();
 
@@ -151,7 +153,7 @@ public:
 
     Enemy() = default;
 
-    void draw(sf::RenderWindow& display, float camera_pos[2]);
+    void draw(sf::RenderWindow& display, float camera_pos[2]) override;
 
 private:
     const sf::Texture texture_;

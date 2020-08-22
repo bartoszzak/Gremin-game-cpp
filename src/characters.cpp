@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <utility>
 #include "characters.hpp"
 
 
@@ -106,7 +105,7 @@ void Player::draw(sf::RenderWindow& display, float camera_pos[2]) {
         sprite_.setScale(1.0f, 1.0f);
         display.draw(sprite_);
     } else {
-        sprite_.setScale(-1.0f, 1.0f);
+        sprite_.setScale(-1.0f, 1.0f); //flips the sprite
         display.draw(sprite_);
     }
 }
@@ -173,7 +172,7 @@ void Enemy::draw(sf::RenderWindow& display, float* camera_pos) {
         sprite_.setScale(1.0f, 1.0f);
         display.draw(sprite_);
     } else {
-        sprite_.setScale(-1.0f, 1.0f);
+        sprite_.setScale(-1.0f, 1.0f); //flips the sprite
         display.draw(sprite_);
     }
 }
