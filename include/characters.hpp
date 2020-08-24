@@ -48,7 +48,7 @@ private:
 class Character : public Entity {
 public:
     inline static float gravity{1};
-    inline static std::unordered_map<Character*, sf::Rect<float>> char_rect_dict{0};
+    inline static std::unordered_map<Character*, sf::Rect<float>&> char_rect_dict{0};
 
     //CONSTRUCTORS
     Character(float pos_x, float pos_y, float width, float height, int health, std::vector<sf::Rect<float>> tiles,
@@ -126,7 +126,9 @@ public:
 
     std::vector<Character*> attack_collision_test();
 
-    void attack(); //TODO: ZLE ZROBIONY HITBOX, W OGOLE NIE ZADAJE TEZ OBRAZEN :(
+    void attack();
+
+    void draw_attack_hitbox(sf::RenderWindow& display, float camera_pos[2]);
 
     void respawn();
 
@@ -136,9 +138,9 @@ private:
     const sf::Texture texture_;
     sf::Sprite sprite_;
 
-    int attack_damage_{0};
+    int attack_damage_{20};
     float attack_range_[2]{200.0f, 20.0f};
-    sf::Rect<float> attack_rect{0, 0, attack_range_[0], attack_range_[1]};
+    sf::Rect<float> attack_rect{0.0f, 0.0f, attack_range_[0], attack_range_[1]};
     bool is_attacking_ = false;
     float respawn_pos_[2]{get_pos_x(), get_pos_y()};
     int respawn_hp{get_health()};

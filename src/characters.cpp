@@ -140,6 +140,14 @@ void Player::attack() {
     }
 }
 
+void Player::draw_attack_hitbox(sf::RenderWindow& display, float* camera_pos) {
+    ///FUNKCJA DO TESTOW, POTEM WYJEBAC
+    sf::RectangleShape attack_hitbox;
+    attack_hitbox.setPosition(attack_rect.left - camera_pos[0], attack_rect.top - camera_pos[1]);
+    attack_hitbox.setSize(sf::Vector2f(attack_range_[0], attack_range_[1]));
+    display.draw(attack_hitbox);
+}
+
 void Player::respawn() {
     char_rect_dict.emplace(this, entity_rect);
     set_health(respawn_hp);

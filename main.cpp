@@ -43,7 +43,7 @@ int main() {
     enemy_image.loadFromImage(e_img);
 
     sf::Sound sample_sound;
-    Player gremin(50, 0, 16, 40, 100, player_image, tiles, sample_sound, 5.0f);
+    Player gremin(50, 0, 16, 40, 100, player_image, tiles, sample_sound, 3.0f);
     Enemy enemy(100, 0, 40, 40, 100, enemy_image, tiles, sample_sound);
 
     while (run) {
@@ -56,6 +56,10 @@ int main() {
             elem.first->update();
             elem.first->draw(window, camera_pos);
         }
+        gremin.draw_attack_hitbox(window, camera_pos); //TODO: WYJEBAC
+
+//        camera_pos[0] = gremin.get_pos_x() - VIEW_SIZE[0] / 2;
+//        camera_pos[1] = gremin.get_pos_y() - VIEW_SIZE[1] / 2;
 
         draw_map(map01, TILE_SIZE, window, camera_pos, dirt_img, grass_img);
         window.display();
