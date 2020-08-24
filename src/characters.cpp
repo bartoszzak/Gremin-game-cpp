@@ -82,7 +82,7 @@ bool Character::check_if_dead() {
     if (health_ <= 0 or get_pos_y() >= 500) {
         char_rect_dict.erase(this);
         //TODO: PLAY DEATH SOUND
-
+        death_sound_.play();
         return true;
     } else { return false; }
 }

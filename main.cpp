@@ -42,9 +42,12 @@ int main() {
     sf::Texture enemy_image;
     enemy_image.loadFromImage(e_img);
 
-    sf::Sound sample_sound;
-    Player gremin(50, 0, 16, 40, 100, player_image, tiles, sample_sound, 3.0f);
-    Enemy enemy(100, 0, 40, 40, 100, enemy_image, tiles, sample_sound);
+    sf::SoundBuffer buffer;
+    buffer.loadFromFile("sounds/bruh.wav");
+    sf::Sound bruh(buffer);
+
+    Player gremin(50, 0, 16, 40, 100, player_image, tiles, bruh, 3.0f);
+    Enemy enemy(100, 0, 40, 40, 100, enemy_image, tiles, bruh);
 
     while (run) {
         window.clear(sf::Color(51, 153, 255));
@@ -56,12 +59,13 @@ int main() {
             elem.first->update();
             elem.first->draw(window, camera_pos);
         }
-        gremin.draw_attack_hitbox(window, camera_pos); //TODO: WYJEBAC
-
-//        camera_pos[0] = gremin.get_pos_x() - VIEW_SIZE[0] / 2;
-//        camera_pos[1] = gremin.get_pos_y() - VIEW_SIZE[1] / 2;
 
         draw_map(map01, TILE_SIZE, window, camera_pos, dirt_img, grass_img);
+        gremin.draw_attack_hitbox(window, camera_pos); //TODO: WYJEBAC
+
+        camera_pos[0] = gremin.get_pos_x() - VIEW_SIZE[0] / 2;
+        camera_pos[1] = gremin.get_pos_y() - VIEW_SIZE[1] / 2;
+
         window.display();
 
     }
